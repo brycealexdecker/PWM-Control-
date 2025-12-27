@@ -1,0 +1,2 @@
+Miyagawa, M. (2018, January). Analog Engineer’s Circuit PWM Generator Circuit. 
+	https://www.ti.com/lit/an/sboa212b/sboa212b.pdf?ts=1742284963578 
