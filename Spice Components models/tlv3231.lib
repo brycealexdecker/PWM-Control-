@@ -1,0 +1,239 @@
+* source TLV3231
+* PSpice Model Editor - Version 17.4.0
+*****************************************************************************
+* (C) Copyright 2019 Texas Instruments Incorporated. All rights reserved.
+*****************************************************************************
+** This model is designed as an aid for customers of Texas Instruments.
+** TI and its licensors and suppliers make no warranties, either expressed
+** or implied, with respect to this model, including the warranties of 
+** merchantability or fitness for a particular purpose.  The model is
+** provided solely on an "as is" basis.  The entire risk as to its quality
+** and performance is with the customer.
+*****************************************************************************
+*
+* This model is subject to change without notice. Texas Instruments
+* Incorporated is not responsible for updating this model
+*
+*****************************************************************************
+*
+** Released by: Texas Instruments Inc.
+* Part: TLV3231
+* Date: 7/19/2024
+* Model Type: All In One
+* Simulator: PSPICE 
+* Simulator Version: 17.4.0
+* EVM Order Number: N/A 
+* EVM Users Guide:  N/A 
+* Datasheet: SNOSDK2
+*
+* Model Version: 1.0
+*
+*****************************************************************************
+*
+* Updates:
+*
+* Version 1.0 : Release to Web        
+*
+*****************************************************************************
+* Notes:
+* The following parameters are modeled: 
+* Iq, tpd, Ibias, Vcm, Vs, Vhys
+* If either input goes beyond the absolute maximum range, the output will float to mid supply for the respective output
+* If the supply goes beyond the absolute maximum range, both outputs will float to mid supply
+* If both inputs go beyond the recommended operating range, the output will float to mid supply
+* If one input goes beyond the recommended operating range, the output will reflect the input state 
+*
+.SUBCKT TLV3231 IN+ IN- V+ V- OUT
+X_U4 N21103 N858493 Prop_Delay  
+X_U2 IN-BUFF IN+BUFF N21168 V+_BUFFER V-_BUFFER INPUTRANGE  
+X_U5 N21237 V- N21168 N786723 V+_BUFFER V-_BUFFER V+ N858535 OUT Output_Stage  
+X_U6 V- V+_BUFFER V-_BUFFER V+ Supply_Buffer  
+X_U3         N785573 IN-BUFF N21103 V+_BUFFER V-_BUFFER N852568 HPA_COMPHYS
+I_IS         N843683 V- DC 200u  
+X_U7 N21237 N786723 V+_BUFFER V-_BUFFER Supply_Enable  
+X_U1 IN+ IN+BUFF IN- IN-BUFF Input_Buffer  
+I_IBP         IN+ V- DC 1p  
+I_IBN         IN- V- DC 1p  
+V_VOS         N785573 IN+BUFF 0.1m
+R_RIS         N843683 V+  1u TC=0,0 
+V_VHYST         N852568 0 1.55m
+E_E2         N858535 0 N858493 0 2
+C_CINPH         IN+ V+  0.5p  TC=0,0 
+C_CINNL         V- IN-  0.5p  TC=0,0 
+C_CINNH         IN- V+  0.5p  TC=0,0 
+C_CINPL         V- IN+  0.5p  TC=0,0 
+.ENDS
+ 
+.SUBCKT Input_Buffer IN+ IN+_BUFF IN- IN-_BUFF  
+X_U1         IN+ IN- IN+_BUFF IN-_BUFF SUPPLY_BUFFER1 
+.ENDS
+ 
+.SUBCKT Supply_Enable EN POR V+_BUFFER V-_BUFFER  
+V_VS_MIN_SET         N785045 0 2.69
+X_U15         N785045 N784647 POR 1V 0 VCC_Range
+X_U13         V+_BUFFER V-_BUFFER N784647 1V 0 Difference
+X_U17         N784661 N784771 EN 1V 0 ORGATE 
+V_VLOGIC         1V 0 1
+X_U16         N784873 N784647 N784771 1V 0 VCC_Range
+V_VS_MAX_SET         N784557 0 5.51
+X_U5         N784647 N784557 N784661 1V 0 VCC_Range
+V_VS_MIN_SET1         N784873 0 2.69
+.ENDS
+ 
+.SUBCKT Supply_Buffer GND V+_BUFFER V-_BUFFER Vcc  
+X_U1         VCC GND V+_BUFFER V-_BUFFER SUPPLY_BUFFER1 
+.ENDS
+ 
+.SUBCKT Output_Stage EN GND IN_RANGE POR V+_BUFFER V-_BUFFER Vcc VIN VOUT  
+X_SMID    CONTROL_MID 0 VOUT MID Output_Stage_SMID 
+X_U3         VIN LVLSHFT_OUT V+_BUFFER V-_BUFFER 1V 0 DIGLEVSHIFT
+X_U7         MID V+_BUFFER V-_BUFFER MID_SUPPLY
+V_VLOGIC         1V 0 1
+X_U8          POR IN_RANGE EN EN CTRLHIZ 1V 0 4ORGATE
+X_U9         CTRLHIZ N789513 1V 0 INVERTER
+X_U10         N789513 POR CONTROL_MID 1V 0 ORGATE 
+L_L1         N778496 VOUT  1n  
+C_COUTH         VOUT VCC  0.5p  TC=0,0 
+C_COUTL         GND VOUT  0.5p  TC=0,0 
+X_SVOL    BOTCTRL 0 GND N850209 Output_Stage_SVOL 
+R_ROUTL         N850209 N778496  60 TC=0,0 
+R_ROUTH         N778496 N8552942  60 TC=0,0 
+X_SVOH    TOPCTRL 0 N8552942 VCC Output_Stage_SVOH 
+X_U11         N858990 POR N8580492 1V 0 NORGATE
+X_U12         N8580492 BOTCTRL 1V 0 INVERTER
+X_U13         POR N8585531 1V 0 INVERTER
+X_U14         LVLSHFT_OUT N8585531 TOPCTRL 1V 0 ANDGATE
+X_U15         LVLSHFT_OUT N858990 1V 0 INVERTER
+.ENDS
+ 
+.SUBCKT INPUTRANGE INN INP INRANGE V+_BUFFER V-_BUFFER  
+V_VCMNP         N20415 V-_BUFFER -0.3
+V_VCMPN         N202710 V+_BUFFER 0.3
+X_U1         N20155 INP N20826 1V 0 VINRANGE_393
+V_VCMPP         N20155 V+_BUFFER 0.3
+V_VCMNN         N20539 V-_BUFFER -0.3
+X_U21         N202710 INN N20833 1V 0 VINRANGE_393
+X_U22         INP N20415 N20840 1V 0 VINRANGE_393
+X_U23         INN N20539 N20531 1V 0 VINRANGE_393
+X_U24         N20826 N20833 N20840 N20531 INRANGE 1V 0 4ORGATE 
+V_VLOGIC         1V 0 1
+.ENDS
+ 
+.SUBCKT Prop_Delay VIN VOUT  
+T_TPD         N03175 0 VOUT 0 Z0=50 TD=20n  
+R_RT         0 VOUT  50 TC=0,0 
+R_RS         N03175 VIN  50 TC=0,0 
+.ENDS
+
+.subckt Output_Stage_SMID 1 2 3 4  
+S_SMID         3 4 1 2 _SMID
+RS_SMID         1 2 1G
+.MODEL         _SMID VSWITCH Roff=1e12 Ron=1.0 Voff=1 Von=0
+.ends Output_Stage_SMID
+
+.subckt Output_Stage_SVOL 1 2 3 4  
+S_SVOL         3 4 1 2 _SVOL
+RS_SVOL         1 2 1G
+.MODEL         _SVOL VSWITCH Roff=1e12 Ron=1.0 Voff=0 Von=1
+.ends Output_Stage_SVOL
+
+.subckt Output_Stage_SVOH 1 2 3 4  
+S_SVOH         3 4 1 2 _SVOH
+RS_SVOH         1 2 1G
+.MODEL         _SVOH VSWITCH Roff=1e12 Ron=1.0 Voff=0 Von=1
+.ends Output_Stage_SVOH
+
+*Begin Custom SubCKT
+
+.SUBCKT CLRLVLSHIFT 1 2 VSS VDD
+E1 3 0 VALUE = { IF( V(1) < 1.2V, V(VSS), IF ( V(1) > 1.21, V(VDD), V(2)))  }
+R1 3 2 1
+C1 2 0 1e-12
+.ENDS
+
+
+.SUBCKT HPA_COMPHYS INP INN OUT_OUT VDD VSS VHYS
+EVMID VMID 0 VALUE = { ( V(VDD) + V(VSS) )/2 }
+EVH VH 0 VALUE = { ( V(VHYS)/2) }
+EINNNEW INNNEW 0 VALUE = { IF( ( V(OUT_OUT) < V(VMID) ),(V(INN) + (V(VH))),( V(INN) - V(VH) ) ) }
+EOUT OUT 0 VALUE = { IF( ( V(INP) > V(INNNEW) ), V(VDD), V(VSS) ) }
+R1 OUT OUT_OUT 1
+C1 OUT_OUT 0 1e-12
+.ENDS
+*$
+.SUBCKT DIGLEVSHIFT 1 2 VDD_OLD VSS_OLD VDD_NEW VSS_NEW
+E1 3 0 VALUE = { IF( V(1) < (V(VDD_OLD)+V(VSS_OLD))/2, V(VSS_NEW), V(VDD_NEW) ) }
+*E1 3 0 VALUE = { IF( V(1) < 1, V(VSS_NEW), V(VDD_NEW) ) }
+R1 3 2 1
+*C1 2 0 1e-12
+.ENDS
+*$
+.SUBCKT INVERTER 1 2 VDD VSS
+E2 2 0 VALUE = { IF( V(1)> (V(VDD)+V(VSS))/2, V(VSS), V(VDD) ) }
+C1 1 0 1e-12
+.ENDS
+*$
+.SUBCKT MID_SUPPLY OUT VDD VSS
+EVMID VMID 0 VALUE = { ( V(VDD) + V(VSS) )/2 }
+EOUT OUT 0 VALUE = {V(VMID)}
+.ENDS
+*$
+.SUBCKT ORGATE 1 2 3 VDD VSS
+E1 4 0 VALUE = { IF( ((V(1)< (V(VDD)+V(VSS))/2 ) & (V(2)< (V(VDD)+V(VSS))/2 )), V(VSS), V(VDD) ) }
+R1 4 3 1
+C1 3 0 1e-12
+.ENDS
+*$
+.SUBCKT Difference 1 2 OUT VDD VSS 
+EOUT OUT1 0 VALUE = { V(1)- V(2)}
+R1 OUT1 OUT 1
+*C1 OUT 0 1e-12
+.ENDS
+*$
+.SUBCKT SUPPLY_BUFFER1 1 2 VDD_NEW VSS_NEW 
+EVDD_NEW VDD_NEW 0 VALUE = {V(1)}
+EVSS_NEW VSS_NEW 0 VALUE = {V(2)}
+.ENDS
+*$
+.SUBCKT VCC_Range 1 2 OUT VDD VSS 
+EOUT OUT2 0 VALUE = { IF( ( V(1) >= V(2) ), V(VDD), V(VSS) ) }
+R1 OUT OUT2 1
+C1 OUT 0 1e-12
+.ENDS
+*$
+.SUBCKT VINRANGE_393 1 2 OUT VDD VSS 
+EOUT OUT2 0 VALUE = { IF( ( V(1) >= V(2) ), V(VSS), V(VDD) ) }
+R1 OUT2 OUT 1
+C1 OUT 0 1e-12
+.ENDS
+*$
+.SUBCKT 4ORGATE 1 2 3 4 5 VDD VSS
+E1 6 0 VALUE = { IF( ((V(1)> (V(VDD)+V(VSS))/2 ) | (V(2)> (V(VDD)+V(VSS))/2 ) | (V(3)> (V(VDD)+V(VSS))/2 ) | (V(4)> (V(VDD)+V(VSS))/2 )), V(VDD), V(VSS) ) }
+R1 5 6 1
+.ENDS
+*$
+
+.SUBCKT NORGATE 1 2 OUT VDD VSS
+EOUT OUT2 0 VALUE = { IF( ((V(1)< (V(VDD)+V(VSS))/2 ) & (V(2)< (V(VDD)+V(VSS))/2 )), V(VDD), V(VSS) ) }
+R1 OUT2 OUT 1
+C1 OUT 0 1e-12
+.ENDS
+.SUBCKT ANDGATE 1 2 3 VDD VSS
+E1 4 0 VALUE = { IF( ((V(1)> (V(VDD)+V(VSS))/2 ) & (V(2)> (V(VDD)+V(VSS))/2 )), V(VDD), V(VSS) ) }
+R1 4 3 1
+C1 3 0 1e-12
+.ENDS
+
+.subckt DESD AN CAT 
++ params:
++ AREA=1.0
++ IS=10f
++ RS=5
++ BV=100
+D_DESD AN CAT model22 {area} 
+.model model22 d
++ is={IS}
++ rs={RS}
++ bv={BV}
+.ends DESD
+

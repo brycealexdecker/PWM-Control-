@@ -1,0 +1,11 @@
+LTspice 24.0.12 for Windows
+Circuit: * C:\Users\Jabro\Documents\Perosnal Projects\PWM-Control-\Spice Components models\Draft1.asc
+Start Time: Sat Dec 27 19:14:55 2025
+solver = Normal
+Maximum thread count: 16
+tnom = 27
+temp = 27
+method = modified trap
+Direct Newton iteration for .op point succeeded.
+Total elapsed time: 0.185 seconds.
+

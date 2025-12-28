@@ -1,0 +1,214 @@
+
+**** 07/19/24 14:47:05 *** PSpice 17.4.0 (25 February 2023) *** ID# 0 ********
+
+ ** Profile: "SCHEMATIC1-TLV3231"  [ C:\Pspice Models\TLV3231\TLV3231-PSpice\TLV3231-PSpiceFiles\SCHEMATIC1\TLV3231.sim ] 
+
+
+ ****     CIRCUIT DESCRIPTION
+
+
+******************************************************************************
+
+
+
+
+** Creating circuit file "TLV3231.cir" 
+** WARNING: THIS AUTOMATICALLY GENERATED FILE MAY BE OVERWRITTEN BY SUBSEQUENT SIMULATIONS
+
+*Libraries: 
+* Profile Libraries :
+* Local Libraries :
+.LIB "../../../tlv3231.lib" 
+* From [PSPICE NETLIST] section of C:\SPB_Data-Silent\cdssetup\OrCAD_PSpice\17.4.0\PSpice.ini file:
+
+*Analysis directives: 
+.TRAN  0 30u 0 
+.OPTIONS ADVCONV
+.OPTIONS FILEMODELSEARCH
+.PROBE64 V(alias(*)) I(alias(*)) W(alias(*)) D(alias(*)) NOISE(alias(*)) 
+.INC "..\SCHEMATIC1.net" 
+
+
+
+**** INCLUDING SCHEMATIC1.net ****
+* source TLV3231
+.EXTERNAL INPUT OUT
+.EXTERNAL INPUT V+
+.EXTERNAL INPUT V-
+.EXTERNAL INPUT IN-
+.EXTERNAL INPUT IN+
+X_U1         IN+ IN- V+ V- OUT TLV3231
+V_VINN3         V- 0 -2.5
+V_VINN         IN- 0 0
+V_V1         IN+ 0  
++PULSE -2.5 2.5 0 10u 10u 5u 
+V_VINN4         V+ 0 2.5
+
+**** RESUMING TLV3231.cir ****
+.END
+
+INFO(ORPSIM-15423): Unable to find index file tlv3231.ind for library file tlv3231.lib.
+
+INFO(ORPSIM-15422): Making new index file tlv3231.ind for library file tlv3231.lib.
+
+Index has 24 entries from 1 file(s).
+
+**** 07/19/24 14:47:05 *** PSpice 17.4.0 (25 February 2023) *** ID# 0 ********
+
+ ** Profile: "SCHEMATIC1-TLV3231"  [ C:\Pspice Models\TLV3231\TLV3231-PSpice\TLV3231-PSpiceFiles\SCHEMATIC1\TLV3231.sim ] 
+
+
+ ****     Voltage Controlled Switch MODEL PARAMETERS
+
+
+******************************************************************************
+
+
+
+
+               X_U1.X_U5.X_SMID._SMID 
+         RON    1            
+        ROFF    1.000000E+12 
+         VON    0            
+        VOFF    1            
+
+
+               X_U1.X_U5.X_SVOL._SVOL 
+         RON    1            
+        ROFF    1.000000E+12 
+         VON    1            
+        VOFF    0            
+
+
+               X_U1.X_U5.X_SVOH._SVOH 
+         RON    1            
+        ROFF    1.000000E+12 
+         VON    1            
+        VOFF    0            
+
+
+**** 07/19/24 14:47:05 *** PSpice 17.4.0 (25 February 2023) *** ID# 0 ********
+
+ ** Profile: "SCHEMATIC1-TLV3231"  [ C:\Pspice Models\TLV3231\TLV3231-PSpice\TLV3231-PSpiceFiles\SCHEMATIC1\TLV3231.sim ] 
+
+
+ ****     INITIAL TRANSIENT SOLUTION       TEMPERATURE =   27.000 DEG C
+
+
+******************************************************************************
+
+
+
+ NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE
+
+
+(   V+)    2.5000  (   V-)   -2.5000  (  IN+)   -2.5000  (  IN-)    0.0000      
+
+(  OUT)   -2.5000  (X_U1.N21103)   -2.4752               (X_U1.N21168)    0.0000
+
+(X_U1.N21237)    0.0000               (X_U1.IN+BUFF)   -2.5000                  
+
+(X_U1.IN-BUFF)    0.0000              (X_U1.N785573)   -2.4999                  
+
+(X_U1.N786723)    0.0000              (X_U1.N843683)    2.5000                  
+
+(X_U1.N852568)     .0016              (X_U1.N858493)   -1.2376                  
+
+(X_U1.N858535)   -2.4752              (X_U1.X_U2.1V)    1.0000                  
+
+(X_U1.X_U3.VH) 775.0E-06              (X_U1.X_U5.1V)    1.0000                  
+
+(X_U1.X_U7.1V)    1.0000              (X_U1.X_U3.OUT)   -2.5000                 
+
+(X_U1.X_U5.MID)    0.0000             (X_U1.V+_BUFFER)    2.5000                
+
+(X_U1.V-_BUFFER)   -2.5000            (X_U1.X_U3.VMID)    0.0000                
+
+(X_U1.X_U2.N20155)    2.8000          (X_U1.X_U2.N20415)   -2.8000              
+
+(X_U1.X_U2.N20531)    0.0000          (X_U1.X_U2.N20539)   -2.8000              
+
+(X_U1.X_U2.N20826)    0.0000          (X_U1.X_U2.N20833)    0.0000              
+
+(X_U1.X_U2.N20840)    0.0000          (X_U1.X_U3.INNNEW) 775.0E-06              
+
+(X_U1.X_U4.N03175)   -1.2376          (X_U1.X_U5.X_U3.3)    0.0000              
+
+(X_U1.X_U5.X_U8.6)    0.0000          (X_U1.X_U2.N202710)    2.8000             
+
+(X_U1.X_U2.X_U24.6)    0.0000         (X_U1.X_U5.BOTCTRL)    1.0000             
+
+(X_U1.X_U5.CTRLHIZ)    0.0000         (X_U1.X_U5.N778496)   -2.5000             
+
+(X_U1.X_U5.N789513)    1.0000         (X_U1.X_U5.N850209)   -2.5000             
+
+(X_U1.X_U5.N858990)    1.0000         (X_U1.X_U5.TOPCTRL)    0.0000             
+
+(X_U1.X_U5.X_U10.4)    1.0000         (X_U1.X_U5.X_U14.4)    0.0000             
+
+(X_U1.X_U7.N784557)    5.5100         (X_U1.X_U7.N784647)    5.0000             
+
+(X_U1.X_U7.N784661)    0.0000         (X_U1.X_U7.N784771)    0.0000             
+
+(X_U1.X_U7.N784873)    2.6900         (X_U1.X_U7.N785045)    2.6900             
+
+(X_U1.X_U7.X_U17.4)    0.0000         (X_U1.X_U5.N8552942)   -2.5000            
+
+(X_U1.X_U5.N8580492)    0.0000        (X_U1.X_U5.N8585531)    1.0000            
+
+(X_U1.X_U2.X_U1.OUT2)    0.0000       (X_U1.X_U5.X_U7.VMID)    0.0000           
+
+(X_U1.X_U7.X_U5.OUT2)    0.0000       (X_U1.X_U2.X_U21.OUT2)    0.0000          
+
+(X_U1.X_U2.X_U22.OUT2)    0.0000      (X_U1.X_U2.X_U23.OUT2)    0.0000          
+
+(X_U1.X_U5.X_U11.OUT2)    0.0000      (X_U1.X_U7.X_U13.OUT1)    5.0000          
+
+(X_U1.X_U7.X_U15.OUT2)    0.0000      (X_U1.X_U7.X_U16.OUT2)    0.0000          
+
+(X_U1.X_U5.CONTROL_MID)    1.0000     (X_U1.X_U5.LVLSHFT_OUT)    0.0000     
+
+
+
+
+    VOLTAGE SOURCE CURRENTS
+    NAME         CURRENT
+
+    V_VINN3      2.000E-04
+    V_VINN      -3.500E-12
+    V_V1        -1.000E-12
+    V_VINN4     -2.000E-04
+    X_U1.V_VOS   0.000E+00
+    X_U1.V_VHYST   0.000E+00
+    X_U1.X_U2.V_VCMNP   0.000E+00
+    X_U1.X_U2.V_VCMPN   0.000E+00
+    X_U1.X_U2.V_VCMPP   0.000E+00
+    X_U1.X_U2.V_VCMNN   0.000E+00
+    X_U1.X_U2.V_VLOGIC   0.000E+00
+    X_U1.X_U5.V_VLOGIC   0.000E+00
+    X_U1.X_U7.V_VS_MIN_SET   0.000E+00
+    X_U1.X_U7.V_VLOGIC   0.000E+00
+    X_U1.X_U7.V_VS_MAX_SET   0.000E+00
+    X_U1.X_U7.V_VS_MIN_SET1   0.000E+00
+
+    TOTAL POWER DISSIPATION   1.00E-03  WATTS
+
+
+
+          JOB CONCLUDED
+
+**** 07/19/24 14:47:05 *** PSpice 17.4.0 (25 February 2023) *** ID# 0 ********
+
+ ** Profile: "SCHEMATIC1-TLV3231"  [ C:\Pspice Models\TLV3231\TLV3231-PSpice\TLV3231-PSpiceFiles\SCHEMATIC1\TLV3231.sim ] 
+
+
+ ****     JOB STATISTICS SUMMARY
+
+
+******************************************************************************
+
+
+
+  License check-out time            =       55.31
+  Total job time (using Solver 1)   =        3.77
+

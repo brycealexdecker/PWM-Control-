@@ -1,0 +1,71 @@
+(ExpressProject "TLV3231"
+  (ProjectVersion "19981106")
+  (SoftwareVersion "17.4-2019 S036 (4091683)  [2/25/2023]-[07/19/24]")
+  (ProjectType "Analog or A/D Mixed Mode")
+  (Folder "Design Resources"
+    (Folder "Library"
+      (File ".\library\tlv3231.olb"
+        (Type "Schematic Library")))
+    ("Allegro Netlist Directory" "allegro")
+    (DOCKED "TRUE")
+    (DOCKING_POSITION "61215")
+    (NoModify)
+    (File ".\tlv3231.dsn"
+      (Type "Schematic Design"))
+    (BuildFileAddedOrDeleted "x")
+    (CompileFileAddedOrDeleted "x")
+    (Board_sim_option "VHDL_flow")
+    (PSPICE_Regenerate_Netlist_Flag "FALSE"))
+  (Folder "Layout")
+  (Folder "Outputs"
+    (File ".\tlv3231-pspicefiles\schematic1\schematic1.net"
+      (Type "Report")))
+  (Folder "PSpice Resources"
+    (Folder "Simulation Profiles"
+      (ActiveProfile ".\tlv3231-pspicefiles\schematic1\tlv3231.sim")
+      (File.PSpice.{09528990-3187-11D2-BC7B-00A0C90CBF91}
+         ".\tlv3231-pspicefiles\schematic1\tlv3231.sim"
+        (DisplayName "SCHEMATIC1-TLV3231")
+        (Type "PSpice Profile")))
+    (Folder "Model Libraries"
+      (Sort User)
+      (File ".\tlv3231.lib"
+        (Type "PSpiceLibrary")
+        (DisplayName ".\tlv3231.lib")))
+    (Folder "Stimulus Files"
+      (Sort User))
+    (Folder "Include Files"
+      (Sort User)))
+  (DefaultLibraryBrowseDirectory "library\PSpice")
+  (Folder "Logs")
+  (PartMRUSelector
+    (TLV3231
+      (FullPartName "TLV3231.Normal")
+      (LibraryName "C:\PSPICE MODELS\TLV3231\TLV3231-PSPICE\TLV3231.OLB")
+      (DeviceIndex "0")))
+  (ISPCBBASICLICENSE "false")
+  (GlobalState
+    (FileView
+      (Path "Design Resources")
+      (Path "Design Resources" ".\tlv3231.dsn")
+      (Path "Design Resources" ".\tlv3231.dsn" "SCHEMATIC1")
+      (Path "Design Resources" "Library")
+      (Path "Outputs")
+      (Select "Design Resources" ".\tlv3231.dsn"))
+    (HierarchyView)
+    (Doc
+      (Type "COrCapturePMDoc")
+      (Frame
+        (Placement "44 0 1 -1 -1 -1 -1 0 270 0 694"))
+      (Tab 0))
+    (Doc
+      (Type "COrSchematicDoc")
+      (Frame
+        (Placement "44 0 1 -1 -1 5 24 5 731 24 735")
+        (Scroll "122 0")
+        (Zoom "144")
+        (Occurrence "/"))
+      (Path "C:\PSPICE MODELS\TLV3231\TLV3231-PSPICE\TLV3231.DSN")
+      (Schematic "SCHEMATIC1")
+      (Page "PAGE1")))
+  (MPSSessionName "a0507996"))
