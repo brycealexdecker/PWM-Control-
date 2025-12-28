@@ -1,9 +1,0 @@
-* C:\Users\Jabro\Documents\Perosnal Projects\PWM-Control-\Spice Components models\Draft1.asc
-V1 N002 0 4
-V2 N003 0 PULSE(0 5 0 5u 5u 0 10u)
-V3 N001 0 5
-XU1 N002 N003 N001 0 out TLV3231
-.tran 0 .0001 0
-.lib C:\Users\Jabro\Documents\Perosnal Projects\PWM-Control-\Spice Components models\tlv3231.lib
-.backanno
-.end
