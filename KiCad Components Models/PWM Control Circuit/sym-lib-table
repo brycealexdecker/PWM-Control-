@@ -1,0 +1,4 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "OPA2197")(type "KiCad")(uri "C:/Users/Jabro/Documents/Perosnal Projects/PWM-Control-/KiCad Components Models/KiCADv6/2025-12-28_05-39-19.kicad_sym")(options "")(descr "Op-amp, rail-to-rail, slew rate"))
+)
